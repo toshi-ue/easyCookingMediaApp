@@ -1,5 +1,5 @@
 <head>
-    <title>Laravel Sample</title>
+    <title>easyCookingMediaApp</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <div class="container ops-main">
@@ -15,6 +15,7 @@
                     <th class="text-center">ID</th>
                     <th class="text-center">レシピ名</th>
                     <th class="text-center">所要時間</th>
+                    <th></th>
                 </tr>
                 @foreach($recipes as $recipe)
                 <tr>
