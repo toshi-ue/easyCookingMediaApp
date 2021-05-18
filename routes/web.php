@@ -11,6 +11,9 @@
 |
 */
 
+// 直接 view を返す書き方
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('recipe', 'RecipeController');
