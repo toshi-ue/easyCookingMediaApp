@@ -1,7 +1,5 @@
-<head>
-    <title>easyCookingMediaApp</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
+@extends('recipe/layout')
+@section('content')
 <div class="container ops-main">
     <div class="row">
         <div class="col-md-12">
@@ -37,3 +35,5 @@
             <div><a href="/recipe/create" class="btn btn-default">新規作成</a></div>
         </div>
     </div>
+</div>
+@endsection
