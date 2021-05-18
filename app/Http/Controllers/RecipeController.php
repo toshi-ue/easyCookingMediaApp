@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RecipeRequest;
+// use App\Http\Requests\RecipeRequest;
 use App\Recipe;
 
 class RecipeController extends Controller
@@ -21,9 +23,14 @@ class RecipeController extends Controller
         return view('recipe/create', compact('recipe'));
     }
 
-    public function store()
+    public function store(RecipeRequest $request)
     {
-        return view('recipe/edit', compact('recipe'));
+        $recipe = new Recipe();
+        $recipe->name = $request->name;
+        $recipe->cookingtime = $request->cookingtime;
+        $recipe->save();
+
+        return redirect("/recipe");
     }
 
     public function show($id)
@@ -40,7 +47,7 @@ class RecipeController extends Controller
         return view('recipe/edit', compact('recipe'));
     }
 
-    public function update(Request $request, $id)
+    public function update(RecipeRequest $request, $id)
     {
         $recipe = Recipe::findOrFail($id);
         $recipe->name = $request->name;
