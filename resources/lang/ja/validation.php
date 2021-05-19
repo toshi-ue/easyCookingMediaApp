@@ -154,6 +154,4 @@ return [
       |
     */
 
-    'attributes' => [],
-
 ];

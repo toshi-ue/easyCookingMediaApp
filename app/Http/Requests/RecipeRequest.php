@@ -28,4 +28,12 @@ class RecipeRequest extends FormRequest
             'cookingtime' => 'required|integer',
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'name' => 'レシピ名',
+            'cookingtime' => '所要時間',
+        ];
+    }
 }
