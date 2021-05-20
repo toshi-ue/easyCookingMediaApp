@@ -12,7 +12,8 @@ class RecipeController extends Controller
     public function index()
     {
         $recipes = Recipe::all();
-        return view('recipe/index', compact('recipes'));
+        $deleted_recipes = Recipe::onlyTrashed()->get();
+        return view('recipe/index', compact('recipes', 'deleted_recipes'));
     }
 
     public function create()
@@ -60,6 +61,13 @@ class RecipeController extends Controller
     {
         $recipe = Recipe::findOrFail($id);
         $recipe->delete();
+
+        return redirect("/recipe");
+    }
+
+    public function restore($id)
+    {
+        Recipe::onlyTrashed()->find($id)->restore();
 
         return redirect("/recipe");
     }
