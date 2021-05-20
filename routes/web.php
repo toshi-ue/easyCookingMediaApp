@@ -17,3 +17,4 @@ Route::get('/', function () {
 });
 
 Route::resource('recipe', 'RecipeController');
+Route::get('recipe/restore/{id}', 'RecipeController@restore');

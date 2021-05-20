@@ -64,4 +64,11 @@ class RecipeController extends Controller
 
         return redirect("/recipe");
     }
+
+    public function restore($id)
+    {
+        Recipe::onlyTrashed()->find($id)->restore();
+
+        return redirect("/recipe");
+    }
 }
