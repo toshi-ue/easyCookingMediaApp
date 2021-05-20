@@ -13,6 +13,7 @@
           <th class="text-center">ID</th>
           <th class="text-center">レシピ名</th>
           <th class="text-center">所要時間</th>
+          <th class="text-center">コメント許可</th>
           <th></th>
         </tr>
         @foreach ($recipes as $recipe)
@@ -22,6 +23,11 @@
           </td>
           <td>{{ $recipe->name }}</td>
           <td>{{ $recipe->cookingtime }}</td>
+          <td>
+          @if($recipe->is_comment_allowed)
+              ○
+          @endif
+          </td>
           <td>
             <form action="/recipe/{{ $recipe->id }}" method="post">
               <input type="hidden" name="_method" value="DELETE">
@@ -47,6 +53,7 @@
           <th class="text-center">ID</th>
           <th class="text-center">レシピ名</th>
           <th class="text-center">所要時間</th>
+          <th class="text-center">コメント許可</th>
           <th></th>
         </tr>
         @foreach ($deleted_recipes as $deleted_recipe)
@@ -56,6 +63,11 @@
           </td>
           <td>{{ $deleted_recipe->name }}</td>
           <td>{{ $deleted_recipe->cookingtime }}</td>
+          <td>
+          @if($deleted_recipe->is_comment_allowed)
+              ○
+          @endif
+          </td>
           <td>
             <form action="/recipe/restore/{{ $deleted_recipe->id }}" method="get">
               <input type="hidden" name="_method" value="PATCH">
