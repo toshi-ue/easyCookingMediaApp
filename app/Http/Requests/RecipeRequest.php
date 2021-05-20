@@ -36,7 +36,7 @@ class RecipeRequest extends FormRequest
         return [
             'name' => 'レシピ名',
             'cookingtime' => '所要時間',
-            'description' => '所要時間',
+            'description' => '説明',
         ];
     }
 }
