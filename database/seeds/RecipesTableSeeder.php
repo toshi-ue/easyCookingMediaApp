@@ -12,21 +12,51 @@ class RecipesTableSeeder extends Seeder
     public function run()
     {
         // clear table
-        // FIXME: VSCodeだとエラー扱いになる(Undefined type 'DB'.intelephense)
         DB::Table('recipes')->truncate();
+
         $recipes = [
             [
-                'name' => 'recipe1',
+                'name' => 'レシピ1',
                 'cookingtime' => 10,
+                'description' => 'レシピ1の説明です',
+                'is_comment_allowed' => 1,
             ],
             [
-                'name' => 'recipe2',
+                'name' => 'レシピ2',
                 'cookingtime' => 20,
+                'description' => 'レシピ1の説明です',
+                'is_comment_allowed' => 0,
             ],
             [
-                'name' => 'recipe3',
+                'name' => 'レシピ3',
                 'cookingtime' => 30,
-            ]
+                'description' => 'レシピ1の説明です',
+                'is_comment_allowed' => 1,
+            ],
+            [
+                'name' => 'レシピ4',
+                'cookingtime' => 40,
+                'description' => 'レシピ1の説明です',
+                'is_comment_allowed' => 1,
+            ],
+            [
+                'name' => 'レシピ5',
+                'cookingtime' => 50,
+                'description' => 'レシピ1の説明です',
+                'is_comment_allowed' => 0,
+            ],
+            [
+                'name' => 'レシピ6',
+                'cookingtime' => 60,
+                'description' => 'レシピ1の説明です',
+                'is_comment_allowed' => 1,
+            ],
+            [
+                'name' => 'レシピ7',
+                'cookingtime' => 70,
+                'description' => 'レシピ1の説明です',
+                'is_comment_allowed' => 1,
+            ],
         ];
 
         foreach ($recipes as $recipe) {

@@ -26,6 +26,8 @@ class RecipeRequest extends FormRequest
         return [
             'name' => 'required|string|max:40',
             'cookingtime' => 'required|integer',
+            'description' => 'required|string',
+            // 'is_comment_allowed' => 'required|boolean',
         ];
     }
 
@@ -34,6 +36,7 @@ class RecipeRequest extends FormRequest
         return [
             'name' => 'レシピ名',
             'cookingtime' => '所要時間',
+            'description' => '説明',
         ];
     }
 }
