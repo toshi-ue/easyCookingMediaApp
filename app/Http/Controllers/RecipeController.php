@@ -12,7 +12,8 @@ class RecipeController extends Controller
     public function index()
     {
         $recipes = Recipe::all();
-        return view('recipe/index', compact('recipes'));
+        $deleted_recipes = Recipe::onlyTrashed()->get();
+        return view('recipe/index', compact('recipes', 'deleted_recipes'));
     }
 
     public function create()
