@@ -35,7 +35,7 @@
       <div class="form-group">
         <label for="description">説明</label>
         <textarea class="form-control   "name="description" cols="30" rows="4" value="{{ $recipe->description }}"></textarea>
-        @if ($errors->has('cookingtime'))
+        @if ($errors->has('description'))
           @foreach ($errors->get('description') as $message)
             <span class="text-danger">{{ $message }}</span><br>
           @endforeach
