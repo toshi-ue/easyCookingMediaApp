@@ -38,6 +38,7 @@
         </tr>
         @endforeach
       </table>
+      <div>{{$recipes->links()}}</div>
       <div><a href="/recipe/create" class="btn btn-default">新規作成</a></div>
     </div>
   </div>
@@ -72,7 +73,7 @@
             <form action="/recipe/restore/{{ $deleted_recipe->id }}" method="get">
               <input type="hidden" name="_method" value="PATCH">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
-              <button type="submit" class="btn btn-xs btn-danger" aria-label="Left Align"><span class="glyphicon glyphicon-repeat"></span></button>
+              <button type="submit" class="btn btn-xs btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-repeat"></span></button>
 
             </form>
           </td>
