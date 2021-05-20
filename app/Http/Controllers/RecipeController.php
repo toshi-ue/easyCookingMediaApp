@@ -28,6 +28,8 @@ class RecipeController extends Controller
         $recipe = new Recipe();
         $recipe->name = $request->name;
         $recipe->cookingtime = $request->cookingtime;
+        $recipe->description = $request->description;
+        $recipe->is_comment_allowed = $request->is_comment_allowed;
         $recipe->save();
 
         return redirect("/recipe");
@@ -52,6 +54,8 @@ class RecipeController extends Controller
         $recipe = Recipe::findOrFail($id);
         $recipe->name = $request->name;
         $recipe->cookingtime = $request->cookingtime;
+        $recipe->description = $request->description;
+        $recipe->is_comment_allowed = $request->is_comment_allowed;
         $recipe->save();
 
         return redirect("/recipe");
