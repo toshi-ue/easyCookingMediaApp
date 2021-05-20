@@ -55,7 +55,7 @@
        -->
       <div class="form-group">
         <label for="is_comment_allowed">コメント許可</label><br/>
-        <input type="radio" id="allowed" name="is_comment_allowed" value="0" checked="{{ $recipe->is_comment_allowed }}">
+        <input type="radio" id="allowed" name="is_comment_allowed" value="1" checked="{{ $recipe->is_comment_allowed }}">
         <label for="allowed">許可する</label>
         <input type="radio" id="not_allowed" name="is_comment_allowed" value="0" checked="{{ $recipe->is_comment_allowed }}">
         <label for="allowed">許可しない</label>
