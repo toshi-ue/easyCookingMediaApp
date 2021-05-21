@@ -18,6 +18,18 @@ class AppServiceProvider extends ServiceProvider
         if (\App::environment('production')) {
             \URL::forceScheme('https');
         }
+
+        $cookingtools = [
+            1 => '包丁',
+            2 => 'まな板',
+            3 => '鍋',
+            4 => '調理バサミ',
+            5 => '箸',
+            6 => 'ピーラー',
+            7 => 'スライサー',
+            8 => 'ホットプレート'
+        ];
+        view()->share('cookingtools', $cookingtools);
     }
 
     /**

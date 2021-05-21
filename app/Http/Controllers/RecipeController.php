@@ -25,11 +25,17 @@ class RecipeController extends Controller
 
     public function store(RecipeRequest $request)
     {
+        // $request->merge([
+        //     'is_published' => $request->boolean('is_published') ? 1 : 0
+        // ]);
+
         $recipe = new Recipe();
         $recipe->name = $request->name;
         $recipe->cookingtime = $request->cookingtime;
+        $recipe->cookingtools = $request->cookingtools;
         $recipe->description = $request->description;
         $recipe->is_comment_allowed = $request->is_comment_allowed;
+        $recipe->is_published = $request->is_published;
         $recipe->save();
 
         return redirect("/recipe");
@@ -54,10 +60,13 @@ class RecipeController extends Controller
         $recipe = Recipe::findOrFail($id);
         $recipe->name = $request->name;
         $recipe->cookingtime = $request->cookingtime;
+        $recipe->cookingtools = $request->cookingtools;
         $recipe->description = $request->description;
         $recipe->is_comment_allowed = $request->is_comment_allowed;
+        $recipe->is_published = $request->is_published;
         $recipe->save();
 
+        // dd($recipe->get('cookingtool'));
         return redirect("/recipe");
     }
 
