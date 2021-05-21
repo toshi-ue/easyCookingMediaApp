@@ -28,6 +28,7 @@ class RecipeRequest extends FormRequest
             'cookingtime' => 'required|integer',
             'description' => 'required|string',
             // 'is_comment_allowed' => 'required|boolean',
+            // 'is_published' => 'required|boolean',
         ];
     }
 
