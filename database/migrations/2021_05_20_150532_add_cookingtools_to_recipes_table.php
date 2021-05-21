@@ -14,7 +14,7 @@ class AddCookingtoolsToRecipesTable extends Migration
     public function up()
     {
         Schema::table('recipes', function (Blueprint $table) {
-            $table->string('cookingtools')->after('cookingtime');
+            $table->string('cookingtools')->nullable()->after('cookingtime');
             $table->boolean('is_published')->default(0)->after('cookingtools');
         });
     }
