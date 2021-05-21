@@ -24,7 +24,7 @@
         @endif
       </div>
       <!-- TODO ファイルアップロード機能を実装する-->
-      <label>ファイルアップロード(未実装)</label>
+      <label>ファイルアップロード(未実装、BootStrap4のclass、デザインが適応されない)</label>
       <div class="form-group">
         <div class="custom-file">
           <input type="file" class="custome-file-input" id="inputFile">
@@ -73,7 +73,6 @@
               {{ in_array($id, $cookingtools, true) ? 'checke="checked"' : ''}}
             @endif
           >
-          <br>
           <label class="form-check-label">{{$cookingtool}}</label>
         </div>
       @endforeach
