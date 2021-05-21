@@ -55,7 +55,7 @@
         あとでtoolsのcrudを作成して複数参照、表示する
       -->
       <div class="form-group">
-      <label>調理道具</label>
+      <label>調理道具(※ 現在DBに登録、DBからの表示ができない状態)</label>
       <!--
       @foreach($cookingtools as $index => $cookingtool)
         <div class="form-check form-check-inline">
