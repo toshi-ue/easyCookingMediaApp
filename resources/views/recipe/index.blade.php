@@ -13,7 +13,9 @@
           <th class="text-center">ID</th>
           <th class="text-center">レシピ名</th>
           <th class="text-center">所要時間</th>
+          <th class="text-center">説明</th>
           <th class="text-center">コメント許可</th>
+          <th class="text-center">公開状態</th>
           <th></th>
         </tr>
         @foreach ($recipes as $recipe)
@@ -23,9 +25,19 @@
           </td>
           <td>{{ $recipe->name }}</td>
           <td>{{ $recipe->cookingtime }}</td>
+          <td class="text-left">{{ $recipe->description }}</td>
           <td>
           @if($recipe->is_comment_allowed)
-              ○
+            許可する
+          @else
+            許可しない
+          @endif
+          </td>
+          <td>
+          @if($recipe->is_published)
+            公開中
+          @else
+            未公開
           @endif
           </td>
           <td>
@@ -54,7 +66,9 @@
           <th class="text-center">ID</th>
           <th class="text-center">レシピ名</th>
           <th class="text-center">所要時間</th>
+          <th class="text-center">説明</th>
           <th class="text-center">コメント許可</th>
+          <th class="text-center">公開状態</th>
           <th></th>
         </tr>
         @foreach ($deleted_recipes as $deleted_recipe)
@@ -64,9 +78,12 @@
           </td>
           <td>{{ $deleted_recipe->name }}</td>
           <td>{{ $deleted_recipe->cookingtime }}</td>
+          <td class="text-left">{{ $recipe->description }}</td>
           <td>
           @if($deleted_recipe->is_comment_allowed)
-              ○
+            許可する
+          @else
+            許可しない
           @endif
           </td>
           <td>
