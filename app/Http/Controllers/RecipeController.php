@@ -57,16 +57,21 @@ class RecipeController extends Controller
 
     public function update(RecipeRequest $request, $id)
     {
+        if (!empty($request->tool)) {
+            $string_tools = implode(",", $request->tool);
+        } else {
+            $string_tools = null;
+        }
+
         $recipe = Recipe::findOrFail($id);
         $recipe->name = $request->name;
         $recipe->cookingtime = $request->cookingtime;
-        $recipe->cookingtools = $request->cookingtools;
+        $recipe->cookingtools = $string_tools;
         $recipe->description = $request->description;
         $recipe->is_comment_allowed = $request->is_comment_allowed;
         $recipe->is_published = $request->is_published;
         $recipe->save();
 
-        // dd($recipe->get('cookingtool'));
         return redirect("/recipe");
     }
 
