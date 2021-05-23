@@ -3,17 +3,36 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RecipeRequest;
 use App\Recipe;
 
 class RecipeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $recipes = Recipe::paginate(5);
-        $deleted_recipes = Recipe::onlyTrashed()->get();
-        return view('recipe/index', compact('recipes', 'deleted_recipes'));
+        $search_keyword = $request->input('search');
+        // dd($search_keyword);
+        $query = Recipe::query();
+        // dd($request);
+        if (!empty($search_keyword)) {
+            // $query = Recipe::query();
+            $query->where('name', 'LIKE', "%" . $search_keyword . "%")
+                ->orWhere('cookingtime', 'LIKE', "%" . $search_keyword . "%")
+                ->orWhere('description', 'LIKE', "%" . $search_keyword . "%")
+                ->orWhere('is_comment_allowed', 'LIKE', "%" . $search_keyword . "%")
+                ->orWhere('is_published', 'LIKE', "%" . $search_keyword . "%");
+            $recipes = $query->paginate(5);
+            $deleted_recipes = Recipe::onlyTrashed()->get();
+        } else {
+            $recipes = Recipe::paginate(5);
+            $deleted_recipes = Recipe::onlyTrashed()->get();
+        }
+
+        // $recipes = Recipe::paginate(5);
+        // $deleted_recipes = Recipe::onlyTrashed()->get();
+        return view('recipe/index', compact('recipes', 'deleted_recipes', 'search_keyword'));
     }
 
     public function create()

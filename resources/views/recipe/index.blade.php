@@ -2,12 +2,20 @@
 @section('content')
 <div class="container ops-main">
   <div class="row">
+    <form method="GET" action="/recipe" class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" name="search" type="search" placeholder="検索" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
+    </form>
     <div class="col-md-12">
       <h3 class="ops-title">レシピ一覧</h3>
     </div>
   </div>
   <div class="row">
     <div class="col-md-11 col-md-offset-1">
+      @if($search_keyword)
+          <div>{{$search_keyword}}の検索結果</div>
+      @endif
+
       <table class="table text-center">
         <tr>
           <th class="text-center">ID</th>
