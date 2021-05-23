@@ -25,8 +25,8 @@ class RecipeRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:40',
-            'cookingtime' => 'required|integer',
-            'description' => 'required|string',
+            'cookingtime' => 'required|integer|between:1,36000',
+            'description' => 'required|string|max:255',
             // 'is_comment_allowed' => 'required|boolean',
             // 'is_published' => 'required|boolean',
         ];
