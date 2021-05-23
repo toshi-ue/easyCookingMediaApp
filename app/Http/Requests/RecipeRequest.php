@@ -27,6 +27,7 @@ class RecipeRequest extends FormRequest
             'name' => 'required|string|max:40',
             'cookingtime' => 'required|integer|between:1,36000',
             'description' => 'required|string|max:255',
+            'main_image' => 'required|file|image|mimes:jpeg,png,jpg,gif|max:2048',
             // 'is_comment_allowed' => 'required|boolean',
             // 'is_published' => 'required|boolean',
         ];
@@ -38,6 +39,7 @@ class RecipeRequest extends FormRequest
             'name' => 'レシピ名',
             'cookingtime' => '所要時間',
             'description' => '説明',
+            'main_image' => '画像',
         ];
     }
 }

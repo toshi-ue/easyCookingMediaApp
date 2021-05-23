@@ -29,6 +29,7 @@ class RecipeController extends Controller
         //     'is_published' => $request->boolean('is_published') ? 1 : 0
         // ]);
 
+        dd($request->main_image);
         $recipe = new Recipe();
         $recipe->name = $request->name;
         $recipe->cookingtime = $request->cookingtime;
@@ -36,6 +37,7 @@ class RecipeController extends Controller
         $recipe->description = $request->description;
         $recipe->is_comment_allowed = $request->is_comment_allowed;
         $recipe->is_published = $request->is_published;
+        $recipe->main_image = basename($request->main_image->storeAs('public/main_images', date("YmdHis") . '.jpg'));
         $recipe->save();
 
         return redirect("/recipe");
