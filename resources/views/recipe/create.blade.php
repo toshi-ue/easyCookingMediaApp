@@ -9,7 +9,7 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-1">
       @include('recipe/message')
-      <form action="/recipe" method="post">
+      <form action="/recipe" method="post" enctype="multipart/form-data">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <div class="form-group">
         <label for="name">レシピ名</label>
@@ -21,15 +21,15 @@
         @endif
       </div>
       <!-- TODO ファイルアップロード機能を実装する-->
-      <label>ファイルアップロード(未実装、BootStrap4のclass、デザインが適応されない)</label>
+      <label>ファイルアップロード(未実装)</label>
       <div class="form-group">
         <div class="custom-file">
-          <input type="file" class="custome-file-input" id="inputFile">
+          <input type="file" name="main_image" class="custome-file-input" id="inputFile">
         </div>
       </div>
       <div class="form-group">
         <label for="cookingtime">所要時間</label>
-        <input type="number" class="form-control" name="cookingtime" value="{{ $recipe->cookingtime }}">
+        <input type="number" class="form-control" name="cookingtime" value="{{ old('cookingtime', $recipe->cookingtime) }}">
         @if ($errors->has('cookingtime'))
           @foreach ($errors->get('cookingtime') as $message)
             <span class="text-danger">{{ $message }}</span><br>
@@ -38,7 +38,7 @@
       </div>
       <div class="form-group">
         <label for="description">説明</label>
-        <textarea class="form-control" name="description" cols="30" rows="4">{{ $recipe->description }}</textarea>
+        <textarea class="form-control" name="description" cols="30" rows="4">{{ old('description', $recipe->description) }}</textarea>
         @if ($errors->has('description'))
           @foreach ($errors->get('description') as $message)
             <span class="text-danger">{{ $message }}</span><br>
@@ -53,9 +53,6 @@
       -->
       <div class="form-group">
       <label>調理道具(※ DBからの表示ができない状態)</label>
-      old('cookingtools'): {{old('cookingtools')}}<br><br>
-      $recipe->cookingtools: {{$recipe->cookingtools}}<br><br>
-      {{-- old('tool'): @foreach(old('tool') as $value) {{$value}} @endforeach --}}
       @foreach($cookingtools as $id => $cookingtool)
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="tool[]" id="tool{{$id}}" value="{{ $id }}"
